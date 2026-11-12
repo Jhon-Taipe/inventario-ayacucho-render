@@ -12,7 +12,7 @@ import threading
 # DATOS DESDE SHAREPOINT
 # ============================================================
 
-URL = "https://continentaledupe-my.sharepoint.com/:x:/g/personal/csti_continental_edu_pe/IQCjStTQmlgHSJJX3DVmCDDJATq0TNbEBNkn6N_o80VqmJc?e=szWhsf&download=1"
+URL = "https://continentaledupe-my.sharepoint.com/:x:/g/personal/csti_continental_edu_pe/IQAmt0NwRCR6T5lspS8OxGUwAbSDagVQJvCTRTsCQQgcICs?e=8mYB2a&download=1"
 
 CONFIG_HOJAS = {
     "Inventario Alquiler Adm.": {"MODALIDAD": "ALQUILER", "CATEGORIA": "ADMINISTRATIVA"},
@@ -25,6 +25,11 @@ CONFIG_HOJAS = {
 def cargar_inventario():
     r = requests.get(URL, allow_redirects=True, timeout=60)
     r.raise_for_status()
+
+    print("ESTADO:", r.status_code)
+    print("TIPO:", r.headers.get("Content-Type"))
+    print("URL FINAL:", r.url)
+    print("PRIMEROS BYTES:", r.content[:30])
 
     frames = []
 
